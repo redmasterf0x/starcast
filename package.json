@@ -9,7 +9,8 @@
     "dev": "node netlify.dev.js",
     "vite-only": "vite --host 0.0.0.0 --port 5173",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0 --port 4173"
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@neondatabase/auth-ui": "^0.3.0-beta",
@@ -26,5 +27,8 @@
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.2",
     "vite": "^8.2.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
