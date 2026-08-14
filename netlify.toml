@@ -1,0 +1,33 @@
+[build]
+command = "npm run build"
+functions = "netlify/functions"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "20"
+VITE_CONFIG_NATIVE_IGNORE_WARNING = "true"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+
+[dev]
+command = "npm start"
+port = 3001
+targetPort = 3001
+publish = "dist"
+
+[context.production.environment]
+NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+NODE_ENV = "staging"
+
+[context.branch-deploy.environment]
+NODE_ENV = "staging"
