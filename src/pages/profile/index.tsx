@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
-
-type Profile = {
-  display_name: string;
-  bio: string;
-  interests: string;
-  member_status: string;
-  email?: string;
-};
+import { Field } from './components';
+import { Profile, ProfileStatus } from './types';
 
 export function ProfilePage() {
   const [profile, setProfile] = useState<Profile>({
@@ -15,7 +9,7 @@ export function ProfilePage() {
     interests: 'Film, media, community, live storytelling',
     member_status: 'Member',
   });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'saving' | 'saved' | 'error'>('loading');
+  const [status, setStatus] = useState<ProfileStatus>('loading');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -119,40 +113,6 @@ export function ProfilePage() {
           {status === 'error' && <span style={{ color: '#fca5a5' }}>{error}</span>}
         </div>
       </div>
-    </div>
-  );
-}
-
-function Field({
-  label,
-  value,
-  multiline = false,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  multiline?: boolean;
-  onChange: (value: string) => void;
-}) {
-  const inputStyle = {
-    width: '100%',
-    padding: '0.8rem 0.9rem',
-    borderRadius: 10,
-    background: '#111827',
-    border: '1px solid rgba(255,255,255,0.08)',
-    color: '#f8fafc',
-    resize: 'vertical',
-    boxSizing: 'border-box' as const,
-  };
-
-  return (
-    <div style={{ display: 'grid', gap: '0.35rem' }}>
-      <label style={{ color: '#cbd5e1', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</label>
-      {multiline ? (
-        <textarea value={value} onChange={(event) => onChange(event.target.value)} style={inputStyle} rows={4} />
-      ) : (
-        <input value={value} onChange={(event) => onChange(event.target.value)} style={inputStyle} />
-      )}
     </div>
   );
 }

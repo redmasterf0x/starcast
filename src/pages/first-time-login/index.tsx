@@ -84,48 +84,40 @@ export function FirstTimeLoginPage() {
   return (
     <div style={{ maxWidth: 600, margin: '2rem auto', padding: '2rem 1.5rem' }}>
       <div style={{ marginBottom: '2rem' }}>
-        <p style={{ margin: 0, color: '#66d9ef', textTransform: 'uppercase', letterSpacing: '0.12em', fontSize: '0.72rem' }}>Welcome</p>
-        <h1 style={{ margin: '0.4rem 0 0', fontSize: '2.2rem' }}>Sign in with a magic link</h1>
-      </div>
-
-      <div style={{ padding: '1.25rem', borderRadius: 14, background: '#111827', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '1.5rem' }}>
-        <p style={{ margin: 0, color: '#dbeafe' }}>
-          No password needed. We'll send you a secure link to sign in instantly.
-        </p>
+        <p style={{ margin: 0, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.12em', fontSize: '0.72rem' }}>Magic link auth</p>
+        <h1 style={{ margin: '0.4rem 0 0', fontSize: '2rem' }}>Sign in to Starcast</h1>
       </div>
 
       <form onSubmit={handleSendMagicLink} style={{ display: 'grid', gap: '1rem' }}>
-        <div style={{ display: 'grid', gap: '0.4rem' }}>
-          <label style={{ color: '#cbd5e1', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Email</label>
+        <div style={{ display: 'grid', gap: '0.35rem' }}>
+          <label style={{ color: '#cbd5e1', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Email address</label>
           <input
             type="email"
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setError('');
-            }}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
-            disabled={loading}
             style={{
+              width: '100%',
               padding: '0.8rem 0.9rem',
               borderRadius: 10,
-              background: '#0f172a',
-              border: '1px solid rgba(255,255,255,0.12)',
+              background: '#111827',
+              border: '1px solid rgba(255,255,255,0.08)',
               color: '#f8fafc',
-              opacity: loading ? 0.6 : 1,
+              boxSizing: 'border-box',
             }}
+            disabled={loading}
           />
         </div>
 
         {error && (
-          <div style={{ padding: '0.75rem 0.9rem', borderRadius: 10, background: 'rgba(252, 165, 165, 0.1)', border: '1px solid rgba(252, 165, 165, 0.3)', color: '#fca5a5' }}>
+          <div style={{ padding: '0.75rem 1rem', borderRadius: 10, background: 'rgba(252, 165, 165, 0.12)', border: '1px solid rgba(252, 165, 165, 0.28)', color: '#fecaca' }}>
             {error}
           </div>
         )}
 
         <button
           type="submit"
-          disabled={loading || !email}
+          disabled={loading}
           style={{
             background: '#ff7a18',
             color: '#0b1020',
@@ -133,20 +125,16 @@ export function FirstTimeLoginPage() {
             borderRadius: 10,
             padding: '0.8rem 1.1rem',
             fontWeight: 700,
-            cursor: loading || !email ? 'not-allowed' : 'pointer',
-            opacity: loading || !email ? 0.6 : 1,
+            cursor: loading ? 'not-allowed' : 'pointer',
           }}
         >
           {loading ? 'Sending...' : 'Send magic link'}
         </button>
-      </form>
 
-      <div style={{ marginTop: '2rem', padding: '1rem 1.1rem', borderRadius: 12, background: '#0f172a', border: '1px solid rgba(255,255,255,0.08)' }}>
-        <p style={{ margin: '0 0 0.5rem', color: '#cbd5e1', fontSize: '0.8rem', fontWeight: 700 }}>First time here?</p>
-        <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.85rem' }}>
-          Enter your email and we'll create an account for you. No password required.
+        <p style={{ margin: '1rem 0 0', color: '#94a3b8', fontSize: '0.85rem', textAlign: 'center' }}>
+          We'll send you a secure link. No password needed.
         </p>
-      </div>
+      </form>
     </div>
   );
 }

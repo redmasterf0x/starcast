@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
+type VerifyStatus = 'verifying' | 'success' | 'error';
+
 export function VerifyLinkPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [status, setStatus] = useState<'verifying' | 'success' | 'error'>('verifying');
+  const [status, setStatus] = useState<VerifyStatus>('verifying');
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -78,20 +80,6 @@ export function VerifyLinkPage() {
           <div style={{ padding: '1.25rem', borderRadius: 14, background: '#111827', border: '1px solid rgba(252, 165, 165, 0.3)', marginBottom: '1.5rem' }}>
             <p style={{ margin: 0, color: '#dbeafe' }}>{message}</p>
           </div>
-          <a
-            href="/first-time-login"
-            style={{
-              display: 'inline-block',
-              background: '#ff7a18',
-              color: '#0b1020',
-              padding: '0.8rem 1.1rem',
-              borderRadius: 10,
-              textDecoration: 'none',
-              fontWeight: 700,
-            }}
-          >
-            Try again
-          </a>
         </div>
       )}
     </div>

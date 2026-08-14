@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
-import { HomePage } from './pages/home';
-import { AuthPage } from './pages/auth';
-import { FirstTimeLoginPage } from './pages/first-time-login';
-import { VerifyLinkPage } from './pages/verify-link';
-import { AccountPage } from './pages/account';
-import { CommunityPage } from './pages/community';
-import { DashboardPage } from './pages/dashboard';
-import { ProfilePage } from './pages/profile';
-import { ModPage } from './pages/mod';
-import { AdminPage } from './pages/admin';
+import {
+  HomePage,
+  AuthPage,
+  FirstTimeLoginPage,
+  VerifyLinkPage,
+  AccountPage,
+  CommunityPage,
+  DashboardPage,
+  ProfilePage,
+  ModPage,
+  AdminPage,
+} from './pages';
 
 type Role = 'user' | 'authed_user' | 'mod' | 'admin';
 
